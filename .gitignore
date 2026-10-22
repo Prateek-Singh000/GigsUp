@@ -1,0 +1,35 @@
+build/
+.gradle/
+*.iml
+.idea/
+out/
+HELP.md
+.DS_Store
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Local runtime files
+*.log
+.DS_Store
+
+# Temporary files
+create-vite.tgz
+package/
+.exe/
+-c/
+"kill-port 8080"/
+
+# Local backups and generated files
+backup/
+bin/
+*.bak

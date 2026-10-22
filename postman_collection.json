@@ -1,0 +1,139 @@
+{
+  "info": {
+    "name": "GigsUp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "vendorToken", "value": "" },
+    { "key": "studentToken", "value": "" },
+    { "key": "shiftId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Register Vendor",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Joe's Cafe\",\n  \"email\": \"vendor@gigsup.com\",\n  \"password\": \"password123\",\n  \"role\": \"VENDOR\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Register Student",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/register",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Alex Student\",\n  \"email\": \"student@gigsup.com\",\n  \"password\": \"password123\",\n  \"role\": \"STUDENT\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login Vendor",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"vendor@gigsup.com\",\n  \"password\": \"password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Login Student",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "url": "{{baseUrl}}/api/auth/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"student@gigsup.com\",\n  \"password\": \"password123\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Post Shift (Vendor)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{vendorToken}}" }
+        ],
+        "url": "{{baseUrl}}/api/shifts",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Barista needed - evening shift\",\n  \"description\": \"Espresso bar coverage\",\n  \"payRate\": 18.50,\n  \"lat\": 28.6139,\n  \"lng\": 77.2090,\n  \"startTime\": \"2026-06-21T14:00:00Z\",\n  \"endTime\": \"2026-06-21T20:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Add Availability (Student)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{studentToken}}" }
+        ],
+        "url": "{{baseUrl}}/api/availability",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"availableFrom\": \"2026-06-21T10:00:00Z\",\n  \"availableTo\": \"2026-06-21T22:00:00Z\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Find Matching Shifts (Student)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{studentToken}}" }
+        ],
+        "url": "{{baseUrl}}/api/shifts/match",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lat\": 28.6129,\n  \"lng\": 77.2080,\n  \"radiusMeters\": 5000\n}"
+        }
+      }
+    },
+    {
+      "name": "Accept Shift (Student)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{studentToken}}" }],
+        "url": "{{baseUrl}}/api/shifts/{{shiftId}}/accept"
+      }
+    },
+    {
+      "name": "Complete Shift",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Authorization", "value": "Bearer {{studentToken}}" }],
+        "url": "{{baseUrl}}/api/shifts/{{shiftId}}/complete"
+      }
+    },
+    {
+      "name": "My Posted Shifts (Vendor)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{vendorToken}}" }],
+        "url": "{{baseUrl}}/api/shifts/posted"
+      }
+    },
+    {
+      "name": "My Accepted Shifts (Student)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "Authorization", "value": "Bearer {{studentToken}}" }],
+        "url": "{{baseUrl}}/api/shifts/accepted"
+      }
+    }
+  ]
+}
