@@ -17,7 +17,6 @@ import java.security.SecureRandom;
 import java.time.Instant;
 
 @Service
-@Profile("dev")
 @RequiredArgsConstructor
 public class OtpService {
 
