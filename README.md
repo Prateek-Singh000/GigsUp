@@ -619,11 +619,11 @@ No specific license is currently documented here. Add a `LICENSE` file to the re
 
 ## 👨‍💻 Author
 
-**Raj S.**
+**Prateek Singh**
 
-🌐 **GitHub:** [@RajS45](https://github.com/RajS45)
+🌐 **GitHub:** [@Prateek-Singh000](https://github.com/Prateek-Singh000)
 
-📦 **Repository:** [GigsUp — Hyper Local Micro Job Engine](https://github.com/RajS45/GigsUp)
+📦 **Repository:** [GigsUp — Hyper Local Micro Job Engine](https://github.com/Prateek-Singh000/GigsUp)
 
 ---
 
